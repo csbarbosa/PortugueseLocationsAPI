@@ -1,0 +1,252 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Portuguese Locations API",
+    "description": "A simple API to get information about portuguese districts, councils and parishes.",
+    "version": "1.0.0"
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/"
+    }
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "Get all the information",
+        "description": "Returns an array with all the parishes of all the councils of all the districts",
+        "operationId": "getId",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": [
+                  {
+                    "district": "Aveiro",
+                    "council": "Águeda",
+                    "parish": "Aguada de Cima"
+                  },
+                  {
+                    "district": "Aveiro",
+                    "council": "Águeda",
+                    "parish": "Fermentelos"
+                  },
+                  {
+                    "district": "Aveiro",
+                    "council": "Águeda",
+                    "parish": "Macinhata do Vouga"
+                  },
+                  "..."
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/districts": {
+      "get": {
+        "summary": "Get all the districts",
+        "description": "Returns an array with all the districts",
+        "operationId": "getDistrictsId",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": [
+                  "Aveiro",
+                  "Beja",
+                  "Braga",
+                  "Bragança",
+                  "Castelo Branco",
+                  "Coimbra",
+                  "Évora",
+                  "Faro",
+                  "Guarda",
+                  "Leiria",
+                  "Lisboa",
+                  "Portalegre",
+                  "Porto",
+                  "Santarém",
+                  "Setúbal",
+                  "Viana do Castelo",
+                  "Vila Real",
+                  "Viseu",
+                  "Ilha da Madeira",
+                  "Ilha de Porto Santo",
+                  "Ilha de Santa Maria",
+                  "Ilha de São Miguel",
+                  "Ilha Terceira",
+                  "Ilha Graciosa",
+                  "Ilha de São Jorge",
+                  "Ilha do Pico",
+                  "Ilha do Faial",
+                  "Ilha das Flores",
+                  "Ilha do Corvo"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/councils/{district}": {
+      "get": {
+        "summary": "Get all the councils of a given district",
+        "description": "Returns an array with all the councils",
+        "operationId": "getCouncilsOfDistrictId",
+        "parameters": [
+          {
+            "name": "district",
+            "in": "path",
+            "description": "district's name",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "Braga"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": [
+                  "Amares",
+                  "Barcelos",
+                  "Braga",
+                  "Cabeceiras de Basto",
+                  "Celorico de Basto",
+                  "Esposende",
+                  "Fafe",
+                  "Guimarães",
+                  "Póvoa de Lanhoso",
+                  "Terras de Bouro",
+                  "Vieira do Minho",
+                  "Vila Nova de Famalicão",
+                  "Vila Verde",
+                  "Vizela"
+                ]
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request due to having an invalid district",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "There's no district with that name"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/parishes/{district}/{council}": {
+      "get": {
+        "summary": "Get all the parishes of a given district and council",
+        "description": "Returns an array with all the parishes",
+        "operationId": "getParishesOfDistrictAndCouncilId",
+        "parameters": [
+          {
+            "name": "district",
+            "in": "path",
+            "description": "district's name",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "Braga"
+          },
+          {
+            "name": "council",
+            "in": "path",
+            "description": "council's name",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "Braga"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": [
+                  "Adaúfe",
+                  "Espinho",
+                  "Esporões",
+                  "Figueiredo",
+                  "Gualtar",
+                  "Lamas",
+                  "Mire de Tibães",
+                  "Padim da Graça",
+                  "Palmeira",
+                  "Pedralva",
+                  "Priscos",
+                  "Ruilhe",
+                  "Braga (São Vicente)",
+                  "Braga (São Vítor)",
+                  "Sequeira",
+                  "Sobreposta",
+                  "Tadim",
+                  "Tebosa",
+                  "União das freguesias de Arentim e Cunha",
+                  "União das freguesias de Braga (Maximinos, Sé e Cividade)",
+                  "União das freguesias de Braga (São José de São Lázaro e São João do Souto)",
+                  "União das freguesias de Cabreiros e Passos (São Julião)",
+                  "União das freguesias de Celeirós, Aveleda e Vimieiro",
+                  "União das freguesias de Crespos e Pousada",
+                  "União das freguesias de Escudeiros e Penso (Santo Estêvão e São Vicente)",
+                  "União das freguesias de Este (São Pedro e São Mamede)",
+                  "União das freguesias de Ferreiros e Gondizalves",
+                  "União das freguesias de Guisande e Oliveira (São Pedro)",
+                  "União das freguesias de Lomar e Arcos",
+                  "União das freguesias de Merelim (São Paio), Panoias e Parada de Tibães",
+                  "União das freguesias de Merelim (São Pedro) e Frossos",
+                  "União das freguesias de Morreira e Trandeiras",
+                  "União das freguesias de Nogueira, Fraião e Lamaçães",
+                  "União das freguesias de Nogueiró e Tenões",
+                  "União das freguesias de Real, Dume e Semelhe",
+                  "União das freguesias de Santa Lucrécia de Algeriz e Navarra",
+                  "União das freguesias de Vilaça e Fradelos"
+                ]
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request due to having an invalid district or council",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "district": {
+                    "summary": "Invalid district",
+                    "value": {
+                      "message": "There's no district with that name"
+                    }
+                  },
+                  "council": {
+                    "summary": "Invalid council",
+                    "value": {
+                      "message": "There's no council with that name for the given district"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
