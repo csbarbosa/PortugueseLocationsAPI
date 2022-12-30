@@ -17,8 +17,8 @@
   "paths": {
     "/": {
       "get": {
-        "summary": "Get all the information",
-        "description": "Returns an array with all the parishes of all the councils of all the districts",
+        "summary": "Get all the parishes with their respective district and council",
+        "description": "Returns an array with all the parishes with their respective district and council",
         "operationId": "getId",
         "responses": {
           "200": {

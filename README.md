@@ -18,7 +18,7 @@ npm install --omit=dev
 
 ## Usage
 
-To start the project, run **npm start** (by default, it's listening through the port 3000):
+To start the project, run **npm start** (it's listening through the port 3000):
 
 ```bash
 npm start
